@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="viewModel"
+            type="com.zhaojin1229.image.ui.SearchListVM" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".MainActivity"
+        >
+
+        <EditText
+            android:id="@+id/search_input"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.searchContent}"
+            app:layout_constraintBottom_toBottomOf="@+id/btn_search"
+            app:layout_constraintEnd_toStartOf="@+id/btn_search"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            />
+
+        <Button
+            android:id="@+id/btn_search"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Search"
+            android:onClick="@{viewModel::onSearchClicked}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:mutableEnable="@{viewModel.getButtonEnable()}"
+            />
+
+        <com.jcodecraeer.xrecyclerview.XRecyclerView
+            android:id="@+id/list_res"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintTop_toBottomOf="@+id/search_input"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:adapter="@{viewModel.imgListAdapter}"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

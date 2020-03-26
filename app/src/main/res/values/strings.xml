@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">ImageSearch</string>
+    <string name="retry">retry</string>
+    <string name="error">internal_error</string>
+</resources>
